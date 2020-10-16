@@ -1,11 +1,11 @@
-export const likeDislikeAsync = (count) => {
+export const dislikeAsync = (count) => {
     let payload = {
         count_list: count
     }
-    return { type: "LIKE", value: payload };
+    return { type: "DISLIKE", value: payload };
 };
 
-export const likeDislike = (id, count) => {
+export const dislike = (id, count) => {
     // console.log("id", id, count)
     let countvalue = count
     let check = true;
@@ -14,7 +14,7 @@ export const likeDislike = (id, count) => {
             countvalue.forEach(element => {
                 if (element.id === id) {
                     check = false;
-                    element.like += 1
+                    element.dislike += 1
                 }
             });
             if (check) {
@@ -34,6 +34,6 @@ export const likeDislike = (id, count) => {
     }
 
     return dispatch => {
-        dispatch(likeDislikeAsync(countvalue));
+        dispatch(dislikeAsync(countvalue));
     };
 };

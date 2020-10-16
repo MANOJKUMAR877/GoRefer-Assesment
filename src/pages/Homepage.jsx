@@ -5,25 +5,39 @@ import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import fetchApi from '../api/fetchApi'
 import { connect } from "react-redux";
 import * as actionCreator from "../store/action/likeDislikeAction";
+import * as actionCreato from "../store/action/dislike";
 class Homepage extends Component {
-    constructor(){
+    constructor() {
 
-    super()
-    this.state = {
-        apiValue: []
-    }
+        super()
+        this.state = {
+            apiValue: []
+        }
     }
     componentDidMount = async () => {
         let apiValue = await fetchApi()
 
         this.setState({ apiValue: apiValue })
     }
-    componentWillReceiveProps(nextProps){
-        console.log("this.props",nextProps)
+    // componentWillReceiveProps(nextProps) {
+    //     console.log("this.props", nextProps)
+    // }
+    handleLike = (id, count) => {
+        let api = this.state.apiValue
+        this.setState({ apiValue: api })
+        // console.log("id", id, count)
+        this.props.likeDislike(id, count)
+    }
+    handledislike=(id,count)=>{
+        let api = this.state.apiValue
+        this.setState({ apiValue: api })
+        // console.log("id", id, count)
+        this.props.dislike(id, count)
     }
 
+
     render() {
-        console.log("chekcing",this.props)
+       // console.log("chekcing", this.props)
         return (
             <div>
                 <ul className="posts">
@@ -43,26 +57,31 @@ class Homepage extends Component {
                                     <div className="post-body">
                                         {post.body}
                                     </div>
-                                    {post.id}
-                                    <FontAwesomeIcon className="like-icon" onClick={() => this.props.likeDislike(post.id)} icon={faThumbsUp} />
+                                    <FontAwesomeIcon className="like-icon" onClick={() => this.handleLike(post.id, this.props.countValue)} icon={faThumbsUp} />
                                     <div>
-                                        {/* {console.log("element")}
-                                        {this.props.countValue.length !== 0 ?
+                                        
+                                        {this.props.countValue !== undefined && this.props.countValue.length !== 0 ?
                                             this.props.countValue.map(element => {
                                                 if (element.id === post.id) {
-                                                    console.log(element)
-                                                   return element.like
+                                                    // console.log("element", element)
+                                                    return element.like
                                                 }
                                             })
                                             : ""
-                                        } */}
-
-
-                                        {/* {post.like} */}
+                                        }
                                     </div>
-                                    <FontAwesomeIcon className="dislike-icon" icon={faThumbsDown} />
+                                    <FontAwesomeIcon className="dislike-icon" onClick={() => this.handledislike(post.id, this.props.countValue)} icon={faThumbsDown} />
                                     <div>
-                                        {post.dislike}
+                                       
+                                    {this.props.countValue !== undefined && this.props.countValue.length !== 0 ?
+                                            this.props.countValue.map(element => {
+                                                if (element.id === post.id) {
+                                                    
+                                                    return element.dislike
+                                                }
+                                            })
+                                            : ""
+                                        }
                                     </div>
                                 </div>
 
@@ -77,14 +96,15 @@ class Homepage extends Component {
     }
 }
 const mapStateToProps = state => {
-    ///console.log(state)
+    // console.log("state", state)
     return {
-        countValue: state.count
+        countValue: state.count.count_list
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
-        likeDislike: (data) => dispatch(actionCreator.likeDislike(data))
+        likeDislike: (data, count) => dispatch(actionCreator.likeDislike(data, count)),
+        dislike: (data, count) => dispatch(actionCreato.dislike(data, count))
     };
 };
 export default connect(
