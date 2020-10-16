@@ -28,7 +28,7 @@ class Homepage extends Component {
         // console.log("id", id, count)
         this.props.likeDislike(id, count)
     }
-    handledislike=(id,count)=>{
+    handledislike = (id, count) => {
         let api = this.state.apiValue
         this.setState({ apiValue: api })
         // console.log("id", id, count)
@@ -37,7 +37,7 @@ class Homepage extends Component {
 
 
     render() {
-       // console.log("chekcing", this.props)
+        // console.log("chekcing", this.props)
         return (
             <div>
                 <ul className="posts">
@@ -58,8 +58,8 @@ class Homepage extends Component {
                                         {post.body}
                                     </div>
                                     <FontAwesomeIcon className="like-icon" onClick={() => this.handleLike(post.id, this.props.countValue)} icon={faThumbsUp} />
-                                    <div>
-                                        
+                                    <div className="likeCount">
+
                                         {this.props.countValue !== undefined && this.props.countValue.length !== 0 ?
                                             this.props.countValue.map(element => {
                                                 if (element.id === post.id) {
@@ -71,12 +71,12 @@ class Homepage extends Component {
                                         }
                                     </div>
                                     <FontAwesomeIcon className="dislike-icon" onClick={() => this.handledislike(post.id, this.props.countValue)} icon={faThumbsDown} />
-                                    <div>
-                                       
-                                    {this.props.countValue !== undefined && this.props.countValue.length !== 0 ?
+                                    <div className="dislikeCount">
+
+                                        {this.props.countValue !== undefined && this.props.countValue.length !== 0 ?
                                             this.props.countValue.map(element => {
                                                 if (element.id === post.id) {
-                                                    
+
                                                     return element.dislike
                                                 }
                                             })

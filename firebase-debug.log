@@ -1,0 +1,33 @@
+[debug] [2020-10-16T15:04:54.147Z] ----------------------------------------------------------------------
+[debug] [2020-10-16T15:04:54.151Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\manojkumar\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-10-16T15:04:54.151Z] CLI Version:   8.0.2
+[debug] [2020-10-16T15:04:54.152Z] Platform:      win32
+[debug] [2020-10-16T15:04:54.152Z] Node Version:  v14.5.0
+[debug] [2020-10-16T15:04:54.155Z] Time:          Fri Oct 16 2020 20:34:54 GMT+0530 (India Standard Time)
+[debug] [2020-10-16T15:04:54.155Z] ----------------------------------------------------------------------
+[debug] [2020-10-16T15:04:54.155Z] 
+[debug] [2020-10-16T15:04:54.172Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-16T15:04:54.173Z] > authorizing via signed-in user
+[debug] [2020-10-16T15:04:54.174Z] [iam] checking project go-refer-assesment for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-10-16T15:04:54.180Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/go-refer-assesment:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-10-16T15:04:54.380Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. getaddrinfo ENOTFOUND cloudresourcemanager.googleapis.com
+[debug] [2020-10-16T15:04:54.382Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/go-refer-assesment  
+ 
+[debug] [2020-10-16T15:04:54.402Z] Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2020-10-16T15:04:54.417Z] FirebaseError: Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+    at Request._callback (C:\Users\manojkumar\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:31:31)
+    at self.callback (C:\Users\manojkumar\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:314:20)
+    at Request.EventEmitter.emit (domain.js:486:12)
+    at Request.onRequestError (C:\Users\manojkumar\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
+    at ClientRequest.emit (events.js:326:22)
+    at ClientRequest.EventEmitter.emit (domain.js:486:12)
+    at TLSSocket.socketErrorListener (_http_client.js:469:9)
+    at TLSSocket.emit (events.js:314:20)
+    at TLSSocket.EventEmitter.emit (domain.js:486:12)
+    at emitErrorNT (internal/streams/destroy.js:100:8)
+    at emitErrorCloseNT (internal/streams/destroy.js:68:3)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[error] 
+[error] Error: Failed to get Firebase project go-refer-assesment. Please make sure the project exists and your account has permission to access it.

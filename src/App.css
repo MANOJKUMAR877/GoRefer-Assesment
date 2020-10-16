@@ -125,7 +125,7 @@ body {
 .dislike-icon {
   margin-left: 70%;
   position: relative;
-  bottom: 20%;
+  bottom: 22%;
   left: 20%;
   cursor: pointer;
 
@@ -145,5 +145,17 @@ body {
   background-color: #4eb5f1;
   text-align: center;
   transition: all 0.2s;
+  cursor: pointer;
+}
+
+.likeCount {
+  margin-left: 1.3rem;
+}
+
+.dislikeCount {
+  margin-left: 70%;
+  position: relative;
+  bottom: 23%;
+  left: 20%;
   cursor: pointer;
 }

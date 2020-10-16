@@ -18,18 +18,18 @@ export const dislike = (id, count) => {
                 }
             });
             if (check) {
-                let value = { id: id, like: 1, dislike: 0 }
+                let value = { id: id, like: 0, dislike: 1 }
                 countvalue.push(value);
             }
         }
         else {
-            let value = { id: id, like: 1, dislike: 0 }
+            let value = { id: id, like: 0, dislike: 1 }
             countvalue.push(value);
         }
     }
     else {
         countvalue = []
-        let value = { id: id, like: 1, dislike: 0 }
+        let value = { id: id, like: 0, dislike: 1 }
         countvalue.push(value);
     }
 
